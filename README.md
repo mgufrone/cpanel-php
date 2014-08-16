@@ -93,4 +93,4 @@ After you define some of your configuration, you can get it again by calling thi
 
 #### Feedback and contribution
 
-This package is free and open source, feel free to fork and report some issue to this package. :-)
+This package is free and open source, feel free to fork and report some issue to this package. :-). Have fun
