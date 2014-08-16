@@ -85,7 +85,7 @@ After you define some of your configuration, you can get it again by calling thi
   $cpanel->getPassword();
 
   // get authentication type
-  $cpanel->getAuthType($auth_type);
+  $cpanel->getAuthType();
 
   // get host
   $cpanel->getHost();
