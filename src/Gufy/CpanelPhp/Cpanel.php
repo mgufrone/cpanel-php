@@ -19,26 +19,31 @@ class Cpanel
 {
   /**
   * @var string Username of your whm server. Must be string
+  * @since v1.0.0
   */
   private $username;
 
   /**
   * @var string Password or long hash of your whm server.
+  * @since v1.0.0
   */
   private $password;
 
   /**
   * @var string Authentication type you want to use. You can set as 'hash' or 'password'.
+  * @since v1.0.0
   */
   private $auth_type;
 
   /**
   * @var string Host of your whm server. You must set it with full host with its port and protocol.
+  * @since v1.0.0
   */
   private $host;
 
   /**
   * @var string Sets of headers that will be sent at request.
+  * @since v1.0.0
   */
   protected $headers=array();
 
@@ -47,6 +52,7 @@ class Cpanel
   *
   * @param string $options options that will be passed and processed
   * @return object return as self-object
+  * @since v1.0.0
   */
   public function __construct($options=array())
   {
@@ -66,6 +72,7 @@ class Cpanel
   * @param string $function function name that will be called
   * @param array $arguments parameter that should be passed when calling API function
   * @return array result of called functions
+  * @since v1.0.0
   */
   public function __call($function, $arguments=[])
   {
@@ -77,6 +84,7 @@ class Cpanel
   *
   * @param array $options list of options that will be checked
   * @return object return as self-object
+  * @since v1.0.0
   */
   private function checkOptions($options)
   {
@@ -97,6 +105,7 @@ class Cpanel
   * @param string $password Password or long hash of your whm server.
   * @access public
   * @return object return as self-object
+  * @since v1.0.0
   */
   public function setAuthorization($username, $password)
   {
@@ -111,6 +120,7 @@ class Cpanel
   * @param string $host Host of your whm server.
   * @access public
   * @return object return as self-object
+  * @since v1.0.0
   */
   public function setHost($host)
   {
@@ -124,6 +134,7 @@ class Cpanel
   * @param string $auth_type Authentication type for calling API.
   * @access public
   * @return object return as self-object
+  * @since v1.0.0
   */
   public function setAuthType($auth_type)
   {
@@ -137,6 +148,7 @@ class Cpanel
   * @param string $name key of header you want to add
   * @param string $value value of header you want to add
   * @return object return as self-object
+  * @since v1.0.0
   */
   public function setHeader($name, $value='')
   {
@@ -148,6 +160,7 @@ class Cpanel
   * get username.
   *
   * @return string return username
+  * @since v1.0.0
   */
   public function getUsername()
   {
@@ -158,6 +171,7 @@ class Cpanel
   * get authentication type.
   *
   * @return string get authentication type
+  * @since v1.0.0
   */
   public function getAuthType()
   {
@@ -168,6 +182,7 @@ class Cpanel
   * get password or long hash.
   *
   * @return string get password or long hash
+  * @since v1.0.0
   */
   public function getPassword()
   {
@@ -178,6 +193,7 @@ class Cpanel
   * get host of your whm server.
   *
   * @return string host of your whm server
+  * @since v1.0.0
   */
   public function getHost()
   {
@@ -188,6 +204,7 @@ class Cpanel
   * extend http headers that will be sent.
   *
   * @return array list of headers that will be sent
+  * @since v1.0.0
   */
   private function createHeader()
   {
@@ -210,6 +227,7 @@ class Cpanel
   * @param string $action function name that will be called.
   * @param string $arguments list of parameters that will be attached.
   * @return array results of API call
+  * @since v1.0.0
   */
 	protected function runQuery($action, $arguments)
 	{

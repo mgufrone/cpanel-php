@@ -1,6 +1,7 @@
 {
     "name": "gufy/cpanel-php",
     "description": "Cpanel/WHM API for PHP",
+    "license": "MIT",
     "authors": [
         {
             "name": "Mochamad Gufron",
