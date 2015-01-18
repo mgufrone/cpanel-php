@@ -42,6 +42,7 @@ For example, if you would like to get list accounts of your whm server, you can 
 ### Functions
 
 - [Defining Configuration on constructor](#defining-configuration-on-constructor)
+- [Usage](#usage)
 - [Overriding Current configuration](#overriding-current-configuration)
 - [Get defined configuration](#get-defined-configuration)
 
@@ -58,7 +59,7 @@ This is the example when you want to define your configuration while creating ne
   ]);
 ```
 
-#### Request an API
+#### Usage
 For example, you would like to get some list accounts from cPanel/WHM
 ```php
 	<?php
