@@ -214,9 +214,9 @@ class Cpanel
     $auth_type = $this->getAuthType();
 
     if('hash' == $auth_type)
-      $headers['Authorization'] = 'WHM '.$username.':'. preg_replace("'(\r|\n)'","",$this->getPassword());
+      $headers['Authorization'] = 'WHM '.$username.':'. preg_replace("'(\r|\n|\s|\t)'","",$this->getPassword());
     elseif('password' == $auth_type)
-      $headers['Authorization'] = 'Basic '.$username.':'. preg_replace("'(\r|\n)'","",$this->getPassword());
+      $headers['Authorization'] = 'Basic '.$username.':'. preg_replace("'(\r|\n|\s|\t)'","",$this->getPassword());
 
     return $headers;
   }
