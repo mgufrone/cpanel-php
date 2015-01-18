@@ -241,4 +241,25 @@ class Cpanel
 		]);
 		return $response->json();
 	}
+
+
+  public function cpanel($module, $function, $username, $params = array())
+  {
+    $action = 'cpanel';
+    $params = array_merge($params, [
+      'cpanel_jsonapi_version'=>2,
+      'cpanel_jsonapi_module'=>$module,
+      'cpanel_jsonapi_func'=>$function,
+      'cpanel_jsonapi_user'=>$username,
+    ]);
+    $response =  $this->runQuery($action, $params);
+    if(!empty($response['cpanelresult']))
+    {
+      return $response['cpanelresult']['data'];
+    }
+    else
+    {
+      throw new \Exception($response['error']);
+    }
+  }
 }
