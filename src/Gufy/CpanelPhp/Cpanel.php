@@ -5,7 +5,7 @@
 */
 
 namespace Gufy\CpanelPhp;
-
+use GuzzleHttp\Client;
 /**
  * Provides easy to use class for calling some CPanel/WHM API functions
  *
@@ -232,7 +232,8 @@ class Cpanel
 	protected function runQuery($action, $arguments)
 	{
     $host = $this->getHost();
-		$response = \GuzzleHttp\post($host.'/json-api/'.$action, [
+    $client = new Client(['base_url'=>$host]);
+		$response = $client->post('/json-api/'.$action, [
 		    'headers' => $this->createHeader(),
 		    // 'body'    => $arguments[0],
 		    'verify'  => false,
