@@ -5,7 +5,7 @@ class CpanelTest extends PHPUnit_Framework_TestCase
   public function testConfiguration()
   {
     $cpanel = new Cpanel($options=array(
-      'host'=>'https://103.27.206.138',
+      'host'=>'https://127.0.0.1:2087',
       'username'=>'root',
       'password'=>'longhash',
       'auth_type'=>'hash'
@@ -16,5 +16,5 @@ class CpanelTest extends PHPUnit_Framework_TestCase
     $this->assertEquals($options['password'], $cpanel->getPassword());
     $this->assertEquals($options['auth_type'], $cpanel->getAuthType());
   }
-  
+
 }
