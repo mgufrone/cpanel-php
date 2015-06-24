@@ -14,7 +14,7 @@ use GuzzleHttp\Client;
  * @link https://github.com/mgufrone/cpanel-php
  * @since v1.0.0
  */
-class Cpanel
+class Cpanel implements CpanelInterface
 {
     /**
      * @var string Username of your whm server. Must be string
