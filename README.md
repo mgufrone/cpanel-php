@@ -1,4 +1,4 @@
-## CPanel/WHM API for PHP library
+## cPanel/WHM API for PHP library
 
 ## Contents
 - [Installation Guide](#installation-guide)
@@ -70,18 +70,18 @@ For example, you would like to get some list accounts from cPanel/WHM
 	$accounts = $cpanel->listaccts(['searchtype'=>'domain', 'search'=>'', 'exact', 'search'=>'helloworld.com']);
 ```
 
-For accessing cpanel API 2, you can use this.
+For accessing cPanel API 2, you can use this.
 
 ```php
 	<?php
-	// get bandwidth data of specific cpanel's user
+	// get bandwidth data of specific cPanel's user
 	$data = $cpanel->cpanel('Bandwidth', 'getbwdata', 'username');
 
 	// removing cron line
 	$data = $cpanel->cpanel('Cron', 'remove_line', 'username', ['line'=>1]);
 ```
 
-The first parameter must be Module you would like to get, second is function name, and the third is username of cpanel's user. There is fourth arguments, when function has some additional arguments, you can pass it there.
+The first parameter must be Module you would like to get, second is function name, and the third is username of cPanel's user. There is fourth arguments, when function has some additional arguments, you can pass it there.
 
 #### Overriding current configuration
 Somehow, you want to override your current configuration. To do this, here is the code
