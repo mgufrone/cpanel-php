@@ -264,15 +264,21 @@ class Cpanel implements CpanelInterface
     {
         $host = $this->getHost();
         $client = new Client(['base_url' => $host]);
-        $response = $client->post('/json-api/' . $action, [
-            'headers' => $this->createHeader(),
-            // 'body'    => $arguments[0],
-            'verify' => false,
-            'query' => $arguments,
+        try{
+          $response = $client->post('/json-api/' . $action, [
+              'headers' => $this->createHeader(),
+              // 'body'    => $arguments[0],
+              'verify' => false,
+              'query' => $arguments,
 
-        ]);
+          ]);
 
-        return $response->json();
+          return $response->json();
+        }
+        catch(\GuzzleHttp\Exceptions\ClientException $e)
+        {
+          return $e->getResponse()->json();
+        }
     }
 
     /**
