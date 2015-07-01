@@ -16,6 +16,8 @@ use GuzzleHttp\Client;
  */
 class Cpanel implements CpanelInterface
 {
+    use CpanelShortcuts;
+
     /**
      * @var string Username of your whm server. Must be string
      *
