@@ -7,8 +7,8 @@ class CpanelTest extends PHPUnit_Framework_TestCase
     $cpanel = new Cpanel($options=array(
       'host'=>'https://127.0.0.1:2087',
       'username'=>'root',
-      'password'=>'longhash',
-      'auth_type'=>'hash'
+      'password'=>'password',
+      'auth_type'=>'password'
     ));
 
     $this->assertEquals($options['host'], $cpanel->getHost());

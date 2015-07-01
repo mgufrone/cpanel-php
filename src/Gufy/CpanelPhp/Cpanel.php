@@ -246,9 +246,8 @@ class Cpanel implements CpanelInterface
         if ('hash' == $auth_type) {
             $headers['Authorization'] = 'WHM ' . $username . ':' . preg_replace("'(\r|\n|\s|\t)'", '', $this->getPassword());
         } elseif ('password' == $auth_type) {
-            $headers['Authorization'] = 'Basic ' . $username . ':' . preg_replace("'(\r|\n|\s|\t)'", '', $this->getPassword());
+            $headers['Authorization'] = 'Basic ' . base64_encode($username . ':' .$this->getPassword());
         }
-
         return $headers;
     }
 
