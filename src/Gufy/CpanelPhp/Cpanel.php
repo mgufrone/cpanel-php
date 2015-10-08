@@ -336,7 +336,7 @@ class Cpanel implements CpanelInterface
         } elseif (!empty($response['cpanelresult']) && !empty($response['cpanelresult']['error'])) {
             throw new \Exception($response['cpanelresult']['error']);
         } elseif(!empty($response['result']) && $response['result']['errors'] == NULL) {
-            return $response['result'];
+            return $response['result']['data'];
         } elseif(!empty($response['result']) && $response['result']['errors'] != NULL) {
             foreach ($response['result']['errors'] as $error){
                 $error = $error.' ';
