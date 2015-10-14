@@ -273,7 +273,6 @@ class Cpanel implements CpanelInterface
               'query' => $arguments,
 
           ]);
-
           return $response->json();
         }
         catch(\GuzzleHttp\Exceptions\ClientException $e)
@@ -331,7 +330,9 @@ class Cpanel implements CpanelInterface
             'cpanel_jsonapi_user' => $username,
         ]);
         $response = $this->runQuery($action, $params);
-        if (!empty($response['cpanelresult']) && empty($response['cpanelresult']['error'])) {
+        if (!empty($response['data']) && empty($response['error'])) {
+            return $response['data'];
+        } elseif (!empty($response['cpanelresult']) && empty($response['cpanelresult']['error'])) {
             return $response['cpanelresult']['data'];
         } elseif (!empty($response['cpanelresult']) && !empty($response['cpanelresult']['error'])) {
             throw new \Exception($response['cpanelresult']['error']);
