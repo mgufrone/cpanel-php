@@ -273,6 +273,7 @@ class Cpanel implements CpanelInterface
               'query' => $arguments,
 
           ]);
+
           return $response->json();
         }
         catch(\GuzzleHttp\Exceptions\ClientException $e)
