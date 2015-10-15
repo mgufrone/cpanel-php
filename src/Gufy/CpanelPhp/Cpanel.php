@@ -309,4 +309,43 @@ class Cpanel implements CpanelInterface
             throw new \Exception($response['error']);
         }
     }
+
+    /**
+     * Use cPanel API 1 or use cPanel API 2 or use UAPI.
+     *
+     * @param $api (1 = cPanel API 1, 2 = cPanel API 2, 3 = UAPI)
+     * @param $module
+     * @param $function
+     * @param $username
+     * @param array $params
+     * @return mixed
+     * @throws \Exception
+     */
+    public function execute_action($api, $module, $function, $username, $params = array())
+    {
+        $action = 'cpanel';
+        $params = array_merge($params, [
+            'cpanel_jsonapi_apiversion' => $api,
+            'cpanel_jsonapi_module' => $module,
+            'cpanel_jsonapi_func' => $function,
+            'cpanel_jsonapi_user' => $username,
+        ]);
+        $response = $this->runQuery($action, $params);
+        if (!empty($response['data']) && empty($response['error'])) {
+            return $response['data'];
+        } elseif (!empty($response['cpanelresult']) && empty($response['cpanelresult']['error'])) {
+            return $response['cpanelresult']['data'];
+        } elseif (!empty($response['cpanelresult']) && !empty($response['cpanelresult']['error'])) {
+            throw new \Exception($response['cpanelresult']['error']);
+        } elseif(!empty($response['result']) && $response['result']['errors'] == NULL) {
+            return $response['result']['data'];
+        } elseif(!empty($response['result']) && $response['result']['errors'] != NULL) {
+            foreach ($response['result']['errors'] as $error){
+                $error = $error.' ';
+            }
+            throw new \Exception($error);
+        } else {
+            throw new \Exception($response['error']);
+        }
+    }
 }

@@ -83,6 +83,19 @@ For accessing cPanel API 2, you can use this.
 
 The first parameter must be Module you would like to get, second is function name, and the third is username of cPanel's user. There is fourth arguments, when function has some additional arguments, you can pass it there.
 
+For accessing to cPanel API 1 or cPanel API 2 or UAPI, you can use this.
+
+```php
+	<?php
+	// get bandwidth data of specific cPanel's user (using cPanel API 2)
+	$data = $cpanel->execute_action('2', 'Bandwidth', 'getbwdata', 'username');
+
+	// removing email address (using UAPI)
+	$data = $cpanel->execute_action('3', 'Email', 'delete_pop', 'username', ['email'=>'peter@griffin.com']);
+```
+
+This function is similar to the above, the only difference is that it has added a parameter which indicates the API you want to use (1 = cPanel API 1, 2 = cPanel API 2, 3 = UAPI), the other arguments are the same.
+
 #### Overriding current configuration
 Somehow, you want to override your current configuration. To do this, here is the code
 
