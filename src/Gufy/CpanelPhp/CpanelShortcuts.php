@@ -91,6 +91,11 @@ trait cPanelShortcuts
         return $this->emailAction('passwdpop', $username, $password, $domain, $account);
     }
 
+    /**
+     * Runs a blank API Request to pull cPanel's response.
+     *
+     * @return array [status (0 is fail, 1 is success), error (internal error code), verbose (Extended error message)]
+     */
     public function checkConnection()
     {
         try {
