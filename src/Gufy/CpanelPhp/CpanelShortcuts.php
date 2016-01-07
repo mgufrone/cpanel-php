@@ -92,6 +92,48 @@ trait cPanelShortcuts
     }
 
     /**
+     * Runs a blank API Request to pull cPanel's response.
+     *
+     * @return array [status (0 is fail, 1 is success), error (internal error code), verbose (Extended error message)]
+     */
+    public function checkConnection()
+    {
+        try {
+            $this->runQuery('', []);
+        } catch (\Exception $e) {
+            if ($e->hasResponse()) {
+                switch ($e->getResponse()->getStatusCode()) {
+                    case 403:
+                        return [
+                            'status' => 0,
+                            'error' => 'auth_error',
+                            'verbose' => 'Check Username and Password/Access Key.'
+                        ];
+                    default:
+                        return [
+                            'status' => 0,
+                            'error' => 'unknown',
+                            'verbose' => 'An unknown error has occurred. Server replied with: ' . $e->getResponse()->getStatusCode()
+                        ];
+                }
+            } else {
+                return [
+                    'status' => 0,
+                    'error' => 'conn_error',
+                    'verbose' => 'Check CSF or hostname/port.'
+                ];
+            }
+            return false;
+        }
+
+        return [
+            'status' => 1,
+            'error' => false,
+            'verbose' => 'Everything is working.'
+        ];
+    }
+
+    /**
      * Split an email address into two items, username and host.
      *
      * @param $email
