@@ -264,18 +264,18 @@ class Cpanel implements CpanelInterface
     protected function runQuery($action, $arguments)
     {
         $host = $this->getHost();
-        $client = new Client(['base_url' => $host]);
+        $client = new Client(['base_uri' => $host]);
         try{
           $response = $client->post('/json-api/' . $action, [
               'headers' => $this->createHeader(),
               // 'body'    => $arguments[0],
               'verify' => false,
               'query' => $arguments,
-              'timeout' => 10,
-              'connect_timeout' => 2
+              'timeout' => 60,
+              'connect_timeout' => 60
           ]);
 
-          return $response->json();
+          return (string) $response->getBody();
         }
         catch(\GuzzleHttp\Exceptions\ClientException $e)
         {
