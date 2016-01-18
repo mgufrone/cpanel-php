@@ -264,7 +264,7 @@ class Cpanel implements CpanelInterface
     protected function runQuery($action, $arguments)
     {
         $host = $this->getHost();
-        $client = new Client(['base_url' => $host]);
+        $client = new Client(['base_uri' => $host]);
         try{
           $response = $client->post('/json-api/' . $action, [
               'headers' => $this->createHeader(),
@@ -275,7 +275,7 @@ class Cpanel implements CpanelInterface
               'connect_timeout' => 2
           ]);
 
-          return $response->json();
+          return (string) $response->getBody();
         }
         catch(\GuzzleHttp\Exceptions\ClientException $e)
         {
