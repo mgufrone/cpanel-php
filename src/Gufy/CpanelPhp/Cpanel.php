@@ -271,8 +271,8 @@ class Cpanel implements CpanelInterface
               // 'body'    => $arguments[0],
               'verify' => false,
               'query' => $arguments,
-              'timeout' => 60,
-              'connect_timeout' => 60
+              'timeout' => 10,
+              'connect_timeout' => 2
           ]);
 
           return (string) $response->getBody();
