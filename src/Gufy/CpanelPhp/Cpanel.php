@@ -374,11 +374,7 @@ class Cpanel implements CpanelInterface
         ]);
 
         $response = $this->runQuery($action, $params);
-        if (!empty($response['cpanelresult'])) {
-            return $response['cpanelresult']['data'];
-        } else {
-            throw new \Exception($response['error']);
-        }
+        return $response;
     }
 
     /**
