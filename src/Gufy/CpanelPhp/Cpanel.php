@@ -270,7 +270,7 @@ class Cpanel implements CpanelInterface
               'headers' => $this->createHeader(),
               // 'body'    => $arguments[0],
               'verify' => false,
-              'query' => $arguments,
+              'query' => $arguments[0],
               'timeout' => 10,
               'connect_timeout' => 2
           ]);
