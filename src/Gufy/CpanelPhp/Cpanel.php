@@ -398,21 +398,7 @@ class Cpanel implements CpanelInterface
             'cpanel_jsonapi_user' => $username,
         ]);
         $response = $this->runQuery($action, $params);
-        if (!empty($response['data']) && empty($response['error'])) {
-            return $response['data'];
-        } elseif (!empty($response['cpanelresult']) && empty($response['cpanelresult']['error'])) {
-            return $response['cpanelresult']['data'];
-        } elseif (!empty($response['cpanelresult']) && !empty($response['cpanelresult']['error'])) {
-            throw new \Exception($response['cpanelresult']['error']);
-        } elseif(!empty($response['result']) && $response['result']['errors'] == NULL) {
-            return $response['result']['data'];
-        } elseif(!empty($response['result']) && $response['result']['errors'] != NULL) {
-            foreach ($response['result']['errors'] as $error){
-                $error = $error.' ';
-            }
-            throw new \Exception($error);
-        } else {
-            throw new \Exception($response['error']);
-        }
+        
+        return $response;
     }
 }
