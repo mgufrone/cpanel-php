@@ -340,7 +340,7 @@ class Cpanel implements CpanelInterface
               'headers' => $this->createHeader(),
               // 'body'    => $arguments[0],
               'verify' => false,
-              'query' => $arguments[0],
+              'query' => count($arguments) > 1 ? $arguments : $arguments[0],
               'timeout' => $this->getTimeout(),
               'connect_timeout' => $this->getConnectionTimeout()
           ]);
