@@ -54,6 +54,20 @@ class Cpanel implements CpanelInterface
     protected $headers = array();
 
     /**
+     * @var integer Query timeout (Guzzle option)
+     *
+     * @since v1.0.0
+     */
+    protected $timeout = 10;
+
+    /**
+     * @var integer Connection timeout (Guzzle option)
+     *
+     * @since v1.0.0
+     */
+    protected $connection_timeout = 2;
+
+    /**
      * Class constructor. The options must be contain username, host, and password.
      *
      * @param array $options options that will be passed and processed
@@ -182,6 +196,38 @@ class Cpanel implements CpanelInterface
     }
 
     /**
+     * set timeout.
+     *
+     * @param $timeout
+     *
+     * @return object return as self-object
+     *
+     * @since v1.0.0
+     */
+    public function setTimeout($timeout)
+    {
+        $this->timeout = (int) $timeout;
+
+        return $this;
+    }
+
+    /**
+     * set connection timeout.
+     *
+     * @param $connection_timeout
+     *
+     * @return object return as self-object
+     *
+     * @since v1.0.0
+     */
+    public function setConnectionTimeout($connection_timeout)
+    {
+        $this->connection_timeout = (int) $connection_timeout;
+
+        return $this;
+    }
+
+    /**
      * get username.
      *
      * @return string return username
@@ -230,6 +276,30 @@ class Cpanel implements CpanelInterface
     }
 
     /**
+     * get timeout.
+     *
+     * @return integer timeout of the Guzzle request
+     *
+     * @since v1.0.0
+     */
+    public function getTimeout()
+    {
+        return $this->timeout;
+    }
+
+    /**
+     * get connection timeout.
+     *
+     * @return integer connection timeout of the Guzzle request
+     *
+     * @since v1.0.0
+     */
+    public function getConnectionTimeout()
+    {
+        return $this->connection_timeout;
+    }
+
+    /**
      * Extend HTTP headers that will be sent.
      *
      * @return array list of headers that will be sent
@@ -271,8 +341,8 @@ class Cpanel implements CpanelInterface
               // 'body'    => $arguments[0],
               'verify' => false,
               'query' => $arguments[0],
-              'timeout' => 10,
-              'connect_timeout' => 2
+              'timeout' => $this->getTimeout(),
+              'connect_timeout' => $this->getConnectionTimeout()
           ]);
 
           return (string) $response->getBody();
