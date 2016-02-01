@@ -1,13 +1,13 @@
 <?php namespace Gufy\CpanelPhp;
 
 /**
- * Trait cPanelShortcuts
+ * Trait CpanelShortcuts
  *
  * A handful of shortcuts for getting things done(tm)
  *
  * @package Gufy\CpanelWhm
  */
-trait cPanelShortcuts
+trait CpanelShortcuts
 {
     /**
      * List all the accounts that the reseller has access to.
