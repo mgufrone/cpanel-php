@@ -31,12 +31,12 @@ trait CpanelShortcuts
      */
     public function createAccount($domain_name, $username, $password, $plan)
     {
-        return $this->runQuery('createacct', [[
+        return $this->runQuery('createacct', [
             'username' => $username,
             'domain' => $domain_name,
             'password' => $password,
             'plan' => $plan,
-        ]]);
+        ]);
     }
 
     /**
@@ -46,9 +46,9 @@ trait CpanelShortcuts
      */
     public function destroyAccount($username)
     {
-        return $this->runQuery('removeacct', [[
+        return $this->runQuery('removeacct', [
             'username' => $username,
-        ]]);
+        ]);
     }
 
     /**
@@ -169,4 +169,3 @@ trait CpanelShortcuts
         ]);
     }
 }
-

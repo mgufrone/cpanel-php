@@ -340,7 +340,7 @@ class Cpanel implements CpanelInterface
               'headers' => $this->createHeader(),
               // 'body'    => $arguments[0],
               'verify' => false,
-              'query' => count($arguments) > 1 ? $arguments : $arguments[0],
+              'query' => $arguments,
               'timeout' => $this->getTimeout(),
               'connect_timeout' => $this->getConnectionTimeout()
           ]);
@@ -398,7 +398,7 @@ class Cpanel implements CpanelInterface
             'cpanel_jsonapi_user' => $username,
         ]);
         $response = $this->runQuery($action, $params);
-        
+
         return $response;
     }
 }
