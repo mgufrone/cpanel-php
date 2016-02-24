@@ -98,8 +98,10 @@ class Cpanel implements CpanelInterface
      *
      * @since v1.0.0
      */
-    public function __call($function, $arguments = [])
+    public function __call($function, $arguments)
     {
+        if (count($arguments) > 0)
+            $arguments = $arguments[0];
         return $this->runQuery($function, $arguments);
     }
 
