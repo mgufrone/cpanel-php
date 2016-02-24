@@ -347,9 +347,9 @@ class Cpanel implements CpanelInterface
 
           return (string) $response->getBody();
         }
-        catch(\GuzzleHttp\Exceptions\ClientException $e)
+        catch(\GuzzleHttp\Exception\ClientException $e)
         {
-          return $e->getResponse()->json();
+          return $e->getMessage();
         }
     }
 
