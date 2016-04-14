@@ -68,6 +68,9 @@ For example, you would like to get some list accounts from cPanel/WHM
 
 	// passing parameters
 	$accounts = $cpanel->listaccts(['searchtype'=>'domain', 'search'=>'', 'exact', 'search'=>'helloworld.com']);
+	
+	// create account (Domain Name, Username, Password, Plan Slug)
+	createAccount(www.domain_name.com.br, 'user', 'pass', 'plan_basic');
 ```
 
 For accessing cPanel API 2, you can use this.
