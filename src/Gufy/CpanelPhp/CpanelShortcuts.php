@@ -99,7 +99,7 @@ trait CpanelShortcuts
     public function checkConnection()
     {
         try {
-            $this->runQuery('', []);
+            $this->runQuery('', [], true);
         } catch (\Exception $e) {
             if ($e->hasResponse()) {
                 switch ($e->getResponse()->getStatusCode()) {

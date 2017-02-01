@@ -328,12 +328,13 @@ class Cpanel implements CpanelInterface
      *
      * @param string $action function name that will be called.
      * @param string $arguments list of parameters that will be attached.
+     * @param bool   $throw defaults to false, if set to true rethrow every exception.
      *
      * @return array results of API call
      *
      * @since v1.0.0
      */
-    protected function runQuery($action, $arguments)
+    protected function runQuery($action, $arguments, $throw=false)
     {
         $host = $this->getHost();
         $client = new Client(['base_uri' => $host]);
@@ -351,6 +352,9 @@ class Cpanel implements CpanelInterface
         }
         catch(\GuzzleHttp\Exception\ClientException $e)
         {
+          if ($throw) {
+            throw $e; 
+          }
           return $e->getMessage();
         }
     }
