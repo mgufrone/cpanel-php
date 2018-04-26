@@ -330,7 +330,7 @@ class Cpanel implements CpanelInterface
      * @param string $arguments list of parameters that will be attached.
      * @param bool   $throw defaults to false, if set to true rethrow every exception.
      *
-     * @return array results of API call
+     * @return string results of API call
      *
      * @since v1.0.0
      */
