@@ -327,21 +327,20 @@ class Cpanel implements CpanelInterface
      * The executor. It will run API function and get the data.
      *
      * @param string $action function name that will be called.
-     * @param string $arguments list of parameters that will be attached.
+     * @param array $arguments list of parameters that will be attached.
      * @param bool   $throw defaults to false, if set to true rethrow every exception.
      *
      * @return array results of API call
      *
      * @since v1.0.0
      */
-    protected function runQuery($action, $arguments, $throw=false)
+    protected function runQuery($action, $arguments = [], $throw = false)
     {
         $host = $this->getHost();
         $client = new Client(['base_uri' => $host]);
         try{
           $response = $client->post('/json-api/' . $action, [
               'headers' => $this->createHeader(),
-              // 'body'    => $arguments[0],
               'verify' => false,
               'query' => $arguments,
               'timeout' => $this->getTimeout(),
