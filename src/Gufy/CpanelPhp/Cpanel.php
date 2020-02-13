@@ -330,6 +330,8 @@ class Cpanel implements CpanelInterface
      * @param string $arguments list of parameters that will be attached.
      * @param bool   $throw defaults to false, if set to true rethrow every exception.
      *
+     * @throws Exception|GuzzleHttp\Exception\ClientException
+     *
      * @return array results of API call
      *
      * @since v1.0.0
@@ -348,7 +350,11 @@ class Cpanel implements CpanelInterface
               'connect_timeout' => $this->getConnectionTimeout()
           ]);
 
-          return (string) $response->getBody();
+            if (($decodedBody = json_decode($response->getBody(), true)) === false) {
+                throw new \Exception(json_last_error_msg(), json_last_error());
+            }
+
+            return $decodedBody;
         }
         catch(\GuzzleHttp\Exception\ClientException $e)
         {
