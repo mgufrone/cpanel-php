@@ -10,7 +10,7 @@
 
 To install this package, you can run this code via your terminal
 ```shell
-	composer require gufy/cpanel-whm:dev-master
+	composer require gufy/cpanel-php:dev-master
 ```
 Or update your `composer.json` by adding this line
 ```json
