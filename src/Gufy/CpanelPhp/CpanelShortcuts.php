@@ -60,6 +60,16 @@ trait CpanelShortcuts
     {
         return $this->cpanel('Email', 'listpops', $username);
     }
+    
+    /**
+     * Gets the forwarders that exist under a cPanel account
+     *
+     * @param $username
+     */
+    public function listForwards($username)
+    {
+        return $this->cpanel('Email', 'listforwards', $username);
+    }
 
     /**
      * @param $username **cPanel username**
